@@ -1,11 +1,11 @@
 import React from 'react'
-import {NavLink,Route,Routes,Outlet} from 'react-router-dom';
+import {NavLink,Route,Routes} from 'react-router-dom';
 import Home from './movie/Home';
 import MovieList from './movie/MovieList';
 import AddMovie from './movie/AddMovie';
 import EditMovie from './movie/EditMovie';
-import { Flex, Layout, Menu } from 'antd';
-const { Header, Footer, Sider, Content } = Layout;
+import { Layout, Menu } from 'antd';
+const { Header, Sider, Content } = Layout;
 
 const _Layout: React.FC = () => {
     const headerStyle = {
