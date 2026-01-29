@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IResponseData, IResponseError,ISearchCondition } from './CommonTypes';
+import { IResponseData, IResponseError,ISearchCondition ,IResponsePageData} from './CommonTypes';
 export interface IMovie{
     _id?: string;
     name:string;
@@ -35,9 +35,13 @@ export class MovieService{
       const {data}=await axios.get(`/api/movies/${movieId}`);
       return data
     }
-    public static async getMovies(condition:ISearchCondition):Promise<IResponseData<IMovie>|IResponseError>{
+    public static async getMovies(condition:ISearchCondition):Promise<IResponsePageData<IMovie>|IResponseError>{
       const {data}=await axios.get(`/api/movies`,{params:condition});
-      return data
+      return {
+        err:"",
+        data:data.movies,
+        total:data.total
+      }
     }
 
 }
