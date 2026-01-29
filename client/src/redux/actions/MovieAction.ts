@@ -50,9 +50,20 @@ function fetchMovies(condition:ISearchCondition):ThunkAction<Promise<void>,any,a
         dispatch(setLoadingAction(false));
     }
 }
+//删除电影
+function deleteMovies(id:string):ThunkAction<Promise<void>,any,any,any>{
+    return async (dispatch)=>{
+        dispatch(setLoadingAction(true));
+        await MovieService.delete(id)
+        dispatch(deleteAction(id));
+        dispatch(setLoadingAction(false));
+    }
+}
 export default {
     saveMoviesAction,
     setLoadingAction,
     setConditionAction,
-    deleteAction
+    deleteAction,
+    fetchMovies,
+    deleteMovies
 };
